@@ -35,17 +35,11 @@ body {
 
 /* Melhorar a experiência de scroll */
 html {
+  background: var(--background);
   scroll-behavior: smooth;
 }
 
 /* Estilos para o modo escuro */
 .dark {
   color-scheme: dark;
-}
-
-/* Melhorar acessibilidade */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-  }
 }

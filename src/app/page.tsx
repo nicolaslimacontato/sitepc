@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="min-h-screen pt-16">
+      <main className="min-h-screen">
         <Hero />
         <div id="jiujitsu">
           <JiuJitsuSection />
