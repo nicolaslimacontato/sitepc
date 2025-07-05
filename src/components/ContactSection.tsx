@@ -1,6 +1,6 @@
 export default function ContactSection() {
   return (
-    <section className="py-20 bg-gray-900 text-white">
+    <section className="py-20 bg-gray-900 dark:bg-gray-800 text-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -62,7 +62,7 @@ export default function ContactSection() {
         </div>
 
         {/* Business Info */}
-        <div className="bg-gray-800 rounded-3xl p-8 md:p-12">
+        <div className="bg-gray-800 dark:bg-gray-700 rounded-3xl p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <h3 className="text-3xl font-bold mb-6">
@@ -112,11 +112,17 @@ export default function ContactSection() {
         {/* Footer */}
         <div className="text-center mt-16 pt-8 border-t border-gray-700">
           <p className="text-gray-400">
-            © 2024 SitePC - Todos os direitos reservados
+            © 2024 SitePC - Todos os direitos reservados - Desenvolvido por {""}
+            <a
+              href="https://www.linkedin.com/in/nicolaslimadasilva"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:text-blue-600"
+            >
+              Nicolas Lima da Silva
+            </a>
           </p>
-          <p className="text-gray-400 mt-2">
-            Desenvolvido com ❤️ para seu negócio
-          </p>
+          <p className="text-gray-400 mt-2">Desenvolvido para o seu negócio</p>
         </div>
       </div>
     </section>

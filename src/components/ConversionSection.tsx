@@ -54,13 +54,13 @@ Serviço selecionado: ${services.find((s) => s.id === selectedService)?.title}`;
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             📹 Conversão VHS/DVD
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Digitalize suas memórias antigas com qualidade profissional
           </p>
         </div>
@@ -73,19 +73,21 @@ Serviço selecionado: ${services.find((s) => s.id === selectedService)?.title}`;
               onClick={() => setSelectedService(service.id)}
               className={`p-8 rounded-2xl border-2 cursor-pointer transition-all ${
                 selectedService === service.id
-                  ? "border-blue-600 bg-blue-50"
-                  : "border-gray-200 hover:border-blue-300"
+                  ? "border-blue-600 bg-blue-50 dark:bg-blue-900/20"
+                  : "border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500"
               }`}
             >
               <div className="text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                   {service.title}
                 </h3>
-                <div className="text-3xl font-bold text-blue-600 mb-4">
+                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-4">
                   {service.price}
                 </div>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                <ul className="space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  {service.description}
+                </p>
+                <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                   {service.features.map((feature, index) => (
                     <li
                       key={index}
@@ -140,13 +142,13 @@ Serviço selecionado: ${services.find((s) => s.id === selectedService)?.title}`;
 
         {/* Contact Form */}
         <div className="max-w-2xl mx-auto">
-          <h3 className="text-3xl font-bold text-center text-gray-900 mb-8">
+          <h3 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">
             Solicitar Conversão
           </h3>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   Nome Completo
                 </label>
                 <input
@@ -156,12 +158,12 @@ Serviço selecionado: ${services.find((s) => s.id === selectedService)?.title}`;
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                   placeholder="Seu nome"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   Telefone
                 </label>
                 <input
@@ -171,13 +173,13 @@ Serviço selecionado: ${services.find((s) => s.id === selectedService)?.title}`;
                   onChange={(e) =>
                     setFormData({ ...formData, phone: e.target.value })
                   }
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                   placeholder="(11) 99999-9999"
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                 Email
               </label>
               <input
@@ -187,12 +189,12 @@ Serviço selecionado: ${services.find((s) => s.id === selectedService)?.title}`;
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                 placeholder="seu@email.com"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                 Descrição do Material
               </label>
               <textarea
@@ -201,7 +203,7 @@ Serviço selecionado: ${services.find((s) => s.id === selectedService)?.title}`;
                   setFormData({ ...formData, description: e.target.value })
                 }
                 rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                 placeholder="Descreva o material que deseja converter (ex: fitas de casamento, DVDs de família, etc.)"
               />
             </div>

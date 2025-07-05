@@ -13,7 +13,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType>({
   theme: "system",
   setTheme: () => {},
-  resolvedTheme: "light"
+  resolvedTheme: "light",
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -23,7 +23,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setMounted(true);
-    
+
     // Recuperar tema salvo no localStorage apenas no cliente
     if (typeof window !== "undefined") {
       const savedTheme = localStorage.getItem("theme") as Theme;
@@ -39,14 +39,23 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const root = window.document.documentElement;
 
     if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
       setResolvedTheme(systemTheme);
-      root.classList.remove("light", "dark");
-      root.classList.add(systemTheme);
+      if (systemTheme === "dark") {
+        root.classList.add("dark");
+      } else {
+        root.classList.remove("dark");
+      }
     } else {
       setResolvedTheme(theme);
-      root.classList.remove("light", "dark");
-      root.classList.add(theme);
+      if (theme === "dark") {
+        root.classList.add("dark");
+      } else {
+        root.classList.remove("dark");
+      }
     }
 
     // Salvar no localStorage
@@ -58,14 +67,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     // Escutar mudanças no sistema
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    
+
     const handleChange = () => {
       if (theme === "system") {
         const systemTheme = mediaQuery.matches ? "dark" : "light";
         setResolvedTheme(systemTheme);
         const root = window.document.documentElement;
-        root.classList.remove("light", "dark");
-        root.classList.add(systemTheme);
+        if (systemTheme === "dark") {
+          root.classList.add("dark");
+        } else {
+          root.classList.remove("dark");
+        }
       }
     };
 
@@ -76,13 +88,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const value = {
     theme,
     setTheme,
-    resolvedTheme
+    resolvedTheme,
   };
 
   return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 }
 

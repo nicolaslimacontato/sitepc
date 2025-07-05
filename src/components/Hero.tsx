@@ -8,7 +8,7 @@ export default function Hero() {
   );
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-purple-900 to-blue-900">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-purple-900 to-blue-900 dark:from-gray-900 dark:via-purple-900 dark:to-blue-900">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-black/20"></div>
 

@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -20,22 +21,23 @@ export default function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             <a
               href="#jiujitsu"
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
             >
               🥋 Jiu-Jitsu
             </a>
             <a
               href="#conversion"
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
             >
               📹 Conversão
             </a>
             <a
               href="#contact"
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
             >
               📞 Contato
             </a>
+
             <a
               href="https://wa.me/5511999999999"
               target="_blank"
@@ -44,26 +46,27 @@ export default function Header() {
             >
               WhatsApp
             </a>
+            <ThemeToggle />
           </nav>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2"
+            className="md:hidden p-2 text-gray-700 dark:text-gray-300"
           >
             <div className="w-6 h-6 flex flex-col justify-center items-center">
               <span
-                className={`w-5 h-0.5 bg-gray-700 transition-all ${
+                className={`w-5 h-0.5 bg-current transition-all ${
                   isMenuOpen ? "rotate-45 translate-y-1" : ""
                 }`}
               ></span>
               <span
-                className={`w-5 h-0.5 bg-gray-700 mt-1 transition-all ${
+                className={`w-5 h-0.5 bg-current mt-1 transition-all ${
                   isMenuOpen ? "opacity-0" : ""
                 }`}
               ></span>
               <span
-                className={`w-5 h-0.5 bg-gray-700 mt-1 transition-all ${
+                className={`w-5 h-0.5 bg-current mt-1 transition-all ${
                   isMenuOpen ? "-rotate-45 -translate-y-1" : ""
                 }`}
               ></span>
@@ -73,29 +76,30 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
+          <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
             <nav className="flex flex-col space-y-4">
               <a
                 href="#jiujitsu"
                 onClick={() => setIsMenuOpen(false)}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
               >
                 🥋 Produtos de Jiu-Jitsu
               </a>
               <a
                 href="#conversion"
                 onClick={() => setIsMenuOpen(false)}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
               >
                 📹 Conversão VHS/DVD
               </a>
               <a
                 href="#contact"
                 onClick={() => setIsMenuOpen(false)}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
               >
                 📞 Contato
               </a>
+
               <a
                 href="https://wa.me/5511999999999"
                 target="_blank"
@@ -105,6 +109,9 @@ export default function Header() {
               >
                 WhatsApp
               </a>
+              <div className="flex justify-center py-2">
+                <ThemeToggle />
+              </div>
             </nav>
           </div>
         )}

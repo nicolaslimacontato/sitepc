@@ -54,13 +54,13 @@ export default function JiuJitsuSection() {
       : products.filter((product) => product.category === selectedCategory);
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             🥋 Produtos de Jiu-Jitsu
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Equipamentos e acessórios de alta qualidade para sua prática de
             jiu-jitsu
           </p>
@@ -75,7 +75,7 @@ export default function JiuJitsuSection() {
               className={`px-6 py-3 rounded-full font-semibold transition-all ${
                 selectedCategory === category
                   ? "bg-blue-600 text-white"
-                  : "bg-white text-gray-700 hover:bg-blue-50 border border-gray-200"
+                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 border border-gray-200 dark:border-gray-700"
               }`}
             >
               {category}
@@ -88,23 +88,23 @@ export default function JiuJitsuSection() {
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+              className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
             >
-              <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+              <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 flex items-center justify-center">
                 <div className="text-6xl">🥋</div>
               </div>
               <div className="p-6">
-                <span className="text-sm text-blue-600 font-semibold">
+                <span className="text-sm text-blue-600 dark:text-blue-400 font-semibold">
                   {product.category}
                 </span>
-                <h3 className="text-xl font-bold text-gray-900 mt-2 mb-2">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mt-2 mb-2">
                   {product.name}
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                   {product.description}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-blue-600">
+                  <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
                     {product.price}
                   </span>
                   <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:scale-105 transition-transform">
