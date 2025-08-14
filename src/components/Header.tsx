@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import ThemeToggle from "./ThemeToggle";
+import Image from "next/image";
 
 interface HeaderProps {
   activeSection: "jiujitsu" | "conversion";
@@ -14,6 +15,25 @@ export default function Header({
 }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Verificar se está em modo escuro
+    const checkDarkMode = () => {
+      setIsDarkMode(document.documentElement.classList.contains("dark"));
+    };
+
+    checkDarkMode();
+
+    // Observer para mudanças no tema
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,9 +70,19 @@ export default function Header({
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Strong Guardian
-            </h1>
+            <div className="relative h-10 w-48">
+              <Image
+                src={
+                  isDarkMode
+                    ? "/strongGuardian/Strong Guardian letra dark.png"
+                    : "/strongGuardian/Strong Guardian letra light.png"
+                }
+                alt="Strong Guardian"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
           </div>
 
           {/* Desktop Navigation */}
