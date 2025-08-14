@@ -38,7 +38,7 @@ export default function ContactSection() {
               Para propostas e orçamentos detalhados
             </p>
             <a
-              href="mailto:contato@sitepc.com.br"
+              href="mailto:contato@strongguardian.com.br"
               className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:scale-105 transition-transform inline-block"
             >
               Enviar Email
@@ -51,7 +51,7 @@ export default function ContactSection() {
             <h3 className="text-2xl font-bold mb-4">Instagram</h3>
             <p className="text-gray-100 mb-6">Acompanhe nossos trabalhos</p>
             <a
-              href="https://instagram.com/sitepc"
+              href="https://instagram.com/strongguardian"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white text-purple-600 px-6 py-3 rounded-full font-semibold hover:scale-105 transition-transform inline-block"
@@ -112,7 +112,8 @@ export default function ContactSection() {
         {/* Footer */}
         <div className="text-center mt-16 pt-8 border-t border-gray-700">
           <p className="text-gray-400">
-            © 2024 SitePC - Todos os direitos reservados - Desenvolvido por {""}
+            © 2025 Strong Guardian - Todos os direitos reservados - Desenvolvido
+            por {""}
             <a
               href="https://www.linkedin.com/in/nicolaslimadasilva"
               target="_blank"

@@ -1,4 +1,4 @@
-# 🚀 SitePC - Site Profissional
+# 🚀 Strong Guardian - Site Profissional
 
 Site moderno e responsivo para seu negócio de produtos de Jiu-Jitsu e serviços de conversão VHS/DVD.
 
@@ -65,10 +65,10 @@ Edite os seguintes arquivos para atualizar suas informações:
 
 2. **Email**: `src/components/ContactSection.tsx`
 
-   - Substitua `contato@sitepc.com.br` pelo seu email
+   - Substitua `contato@strongguardian.com.br` pelo seu email
 
 3. **Instagram**: `src/components/ContactSection.tsx`
-   - Substitua `sitepc` pelo seu usuário do Instagram
+   - Substitua `strongguardian` pelo seu usuário do Instagram
 
 ### Produtos
 

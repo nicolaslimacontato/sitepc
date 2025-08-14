@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
+interface HeroProps {
+  activeSection: "jiujitsu" | "conversion";
+  onSectionChange: (section: "jiujitsu" | "conversion") => void;
+}
 
-export default function Hero() {
-  const [activeTab, setActiveTab] = useState<"jiujitsu" | "conversion">(
-    "jiujitsu"
-  );
-
+export default function Hero({ activeSection, onSectionChange }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-purple-900 to-blue-900 dark:from-gray-900 dark:via-purple-900 dark:to-blue-900">
       {/* Background Pattern */}
@@ -15,7 +14,7 @@ export default function Hero() {
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         <h1 className="text-5xl md:text-7xl font-bold mb-6">
           <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-            SitePC
+            Strong Guardian
           </span>
         </h1>
 
@@ -28,9 +27,9 @@ export default function Hero() {
         <div className="flex justify-center mb-8">
           <div className="bg-white/10 backdrop-blur-sm rounded-full p-1">
             <button
-              onClick={() => setActiveTab("jiujitsu")}
+              onClick={() => onSectionChange("jiujitsu")}
               className={`px-6 py-3 rounded-full transition-all ${
-                activeTab === "jiujitsu"
+                activeSection === "jiujitsu"
                   ? "bg-white text-blue-900 font-semibold"
                   : "text-white hover:bg-white/20"
               }`}
@@ -38,9 +37,9 @@ export default function Hero() {
               🥋 Produtos Jiu-Jitsu
             </button>
             <button
-              onClick={() => setActiveTab("conversion")}
+              onClick={() => onSectionChange("conversion")}
               className={`px-6 py-3 rounded-full transition-all ${
-                activeTab === "conversion"
+                activeSection === "conversion"
                   ? "bg-white text-blue-900 font-semibold"
                   : "text-white hover:bg-white/20"
               }`}
@@ -51,14 +50,17 @@ export default function Hero() {
         </div>
 
         {/* Content based on active tab */}
-        {activeTab === "jiujitsu" ? (
+        {activeSection === "jiujitsu" ? (
           <div className="space-y-4">
             <p className="text-lg md:text-xl">
               Kimonos, acessórios e equipamentos de alta qualidade para sua
               prática
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform">
+              <button
+                onClick={() => onSectionChange("jiujitsu")}
+                className="bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform"
+              >
                 Ver Produtos
               </button>
               <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-900 transition-all">
@@ -72,7 +74,10 @@ export default function Hero() {
               Converta suas fitas VHS e DVDs para MP4 com qualidade profissional
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform">
+              <button
+                onClick={() => onSectionChange("conversion")}
+                className="bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform"
+              >
                 Solicitar Conversão
               </button>
               <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-900 transition-all">

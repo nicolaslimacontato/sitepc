@@ -3,7 +3,15 @@
 import { useState, useEffect } from "react";
 import ThemeToggle from "./ThemeToggle";
 
-export default function Header() {
+interface HeaderProps {
+  activeSection: "jiujitsu" | "conversion";
+  onSectionChange: (section: "jiujitsu" | "conversion") => void;
+}
+
+export default function Header({
+  activeSection,
+  onSectionChange,
+}: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -23,6 +31,11 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleSectionClick = (section: "jiujitsu" | "conversion") => {
+    onSectionChange(section);
+    setIsMenuOpen(false); // Fechar menu mobile se estiver aberto
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md
@@ -38,24 +51,32 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              SitePC
+              Strong Guardian
             </h1>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a
-              href="#jiujitsu"
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200 hover:scale-105 transform"
+            <button
+              onClick={() => handleSectionClick("jiujitsu")}
+              className={`px-4 py-2 rounded-full font-medium transition-all duration-200 hover:scale-105 transform ${
+                activeSection === "jiujitsu"
+                  ? "bg-blue-600 text-white shadow-lg"
+                  : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20"
+              }`}
             >
               🥋 Jiu-Jitsu
-            </a>
-            <a
-              href="#conversion"
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200 hover:scale-105 transform"
+            </button>
+            <button
+              onClick={() => handleSectionClick("conversion")}
+              className={`px-4 py-2 rounded-full font-medium transition-all duration-200 hover:scale-105 transform ${
+                activeSection === "conversion"
+                  ? "bg-blue-600 text-white shadow-lg"
+                  : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20"
+              }`}
             >
               📹 Conversão
-            </a>
+            </button>
             <a
               href="#contact"
               className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200 hover:scale-105 transform"
@@ -106,24 +127,30 @@ export default function Header() {
         >
           <div className="py-4 border-t border-gray-200 dark:border-gray-700">
             <nav className="flex flex-col space-y-4">
-              <a
-                href="#jiujitsu"
-                onClick={() => setIsMenuOpen(false)}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-all duration-200 hover:translate-x-2 hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded-lg"
+              <button
+                onClick={() => handleSectionClick("jiujitsu")}
+                className={`text-left p-3 rounded-lg font-medium transition-all duration-200 hover:translate-x-2 ${
+                  activeSection === "jiujitsu"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                }`}
               >
                 🥋 Produtos de Jiu-Jitsu
-              </a>
-              <a
-                href="#conversion"
-                onClick={() => setIsMenuOpen(false)}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-all duration-200 hover:translate-x-2 hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded-lg"
+              </button>
+              <button
+                onClick={() => handleSectionClick("conversion")}
+                className={`text-left p-3 rounded-lg font-medium transition-all duration-200 hover:translate-x-2 ${
+                  activeSection === "conversion"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                }`}
               >
                 📹 Conversão VHS/DVD
-              </a>
+              </button>
               <a
                 href="#contact"
                 onClick={() => setIsMenuOpen(false)}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-all duration-200 hover:translate-x-2 hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded-lg"
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-all duration-200 hover:translate-x-2 hover:bg-gray-50 dark:hover:bg-gray-800 p-3 rounded-lg"
               >
                 📞 Contato
               </a>
